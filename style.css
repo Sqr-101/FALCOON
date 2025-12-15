@@ -1,0 +1,224 @@
+/* تعريف المتغيرات للألوان الجديدة */
+:root {
+    /* تم استبدال الألوان الزرقاء بالترابية */
+    --primary-color: #533737;       /* بني عميق للنصوص والحدود */
+    --secondary-bg: #e0d3d3;       /* أبيض/فاتح للخلفية الرئيسية */
+    --accent-color: #B76E5B;       /* تيرا كوتا للأزرار والبروز */
+    --header-footer-bg: #E7D6C4;   /* بيج طيني لخلفية الهيدر والفوتر */
+    --light-text-color: #ffffff;
+    /* خلفية الهيدر/الفوتر بلون البيج الطيني الشفاف قليلاً */
+    --header-bg-rgba: rgba(231, 214, 196, 0.9); 
+    /* خلفية شفافة بنية دافئة لبطاقة المعلومات */
+    --card-overlay-rgba: rgba(83, 55, 55, 0.37); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--secondary-bg); 
+    color: var(--primary-color); /* لون النص الآن بني عميق */
+}
+
+/* ------------------ الهيدر ------------------ */
+header {
+    background-color: var(--header-footer-bg); /* بيج طيني */
+    padding: 15px 5%; 
+    border-bottom: 3px solid var(--accent-color); /* حدود بلون التيرا كوتا */
+}
+
+/* --- تعديلات Flexbox الأساسية لجميع الشاشات --- */
+.logo {
+    display: flex; /* الأهم: استخدام نظام المرونة */
+    align-items: center; /* محاذاة عمودية في المنتصف */
+    gap: 15px; /* مسافة بين الشعار والعنوان */
+    /* تم إزالة float: right; من .logo */
+}
+
+.logo img {
+    max-height: 80px; 
+    width: auto;
+    /* تم إزالة float: right; */
+    /* تم إزالة margin-left: 15px; سيتم تعويضها بـ gap */
+}
+
+.logo h1 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-align: right;
+    /* تم إزالة float: right; */
+    line-height: normal; /* إزالة الارتفاع الثابت 80px ليتماشى مع Flex */
+}
+
+/* *** تم حذف header::after بالكامل لأنه لم يعد ضرورياً *** */
+/* ------------------------------------------- */
+
+/* ------------------ أزرار التواصل (روابط) ------------------ */
+.contact-buttons {
+    position: fixed;
+    bottom: 20px; 
+    right: 15px;
+    z-index: 1000; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%; 
+    font-size: 1.5em;
+    color: var(--light-text-color); 
+    transition: all 0.3s ease;
+    text-align: center; 
+    line-height: 50px; 
+    text-decoration: none; 
+    /* إضاءة Box Shadow حول الزر بلون كحلي */
+    box-shadow: 0 0 15px rgba(183, 110, 91, 0.7); 
+}
+
+.phone { background-color: #3e8e41; } 
+.telegram { background-color: #0088cc; } 
+.whatsapp { background-color: #25D366; } 
+
+/* إلغاء زيادة الظل عند التحويم */
+.contact-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(183, 110, 91, 0.7); 
+}
+
+/* ------------------ معرض الصور المتقلب (Carousel) ------------------ */
+.carousel-container {
+    width: 70%; 
+    max-width: 400px;
+    height: 180px; 
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative; 
+    border-radius: 8px;
+    /* تغيير الظل ليصبح بلون بني دافئ */
+    box-shadow: 0 0 25px rgba(83, 55, 55, 0.8);
+    
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out; 
+}
+
+.carousel-item.active {
+    opacity: 1; 
+}
+
+
+/* ------------------ قسم المحتوى (Info Card) ------------------ */
+main {
+    padding: 20px 5%;
+}
+
+.info-card {
+    background-color:rgb(228, 226, 226); 
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(83, 55, 55, 0.6);
+}
+
+.image-box {
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+}
+
+.image-box img {
+    max-width: 100%; 
+    height: auto;
+    max-height: 400px; 
+    border-radius: 8px;
+    margin-bottom: 15px;
+    object-fit: contain; 
+}
+
+.description {
+    width: 100%; 
+    text-align: center;
+    padding: 15px;
+    background-color: var(--header-footer-bg); 
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.description h2 {
+    color: var(--accent-color); 
+    margin-bottom: 5px;
+}
+
+/* ------------------ الفوتر ------------------ */
+footer {
+    background-color: var(--header-footer-bg); 
+    color: var(--primary-color); 
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    border-top: 3px solid var(--accent-color);
+}
+
+/* ------------------ التجاوب (Media Queries) ------------------ */
+@media (max-width: 768px) {
+    
+    /* 1. تعديل الهيدر على الهاتف (عرض أفقي) */
+    header {
+        padding: 10px;
+    }
+
+    .logo {
+        flex-direction: row; /* **التعديل الأهم: لضمان بقاء الشعار والنص جنباً إلى جنب** */
+        align-items: center; 
+        justify-content: flex-start; /* سحب العناصر إلى اليمين (في وضع RTL) */
+        gap: 8px; /* تقليل المسافة قليلاً */
+    }
+
+    .logo img {
+        max-height: 60px; /* تصغير حجم الشعار قليلاً ليناسب شاشة الهاتف */
+        margin-right: 0;
+    }
+
+    .logo h1 {
+        font-size: 1.0em; /* تصغير حجم العنوان ليناسب العرض الأفقي المحدود */
+        padding: 0;
+    }
+    
+    /* 2. تعديل السلايدر على الهاتف */
+    .carousel-container {
+        width: 95%; 
+        height: 120px; 
+    }
+    
+    /* 3. تعديل أزرار التواصل */
+    .contact-buttons {
+        bottom: 10px; 
+        right: 10px;
+        gap: 8px;
+    }
+
+    .contact-btn {
+        width: 40px; 
+        height: 40px;
+        font-size: 1.2em;
+        line-height: 40px;
+    }
+}
